@@ -160,3 +160,45 @@ describe("testing/users", () => {
     });
   
   */
+ //##############################################################
+ 
+ /*VERIFICACION DEL PAGINATION
+
+ describe('POST /postsWithPagination', () => {
+  it('should return posts with pagination', async () => {
+    const response = await request(app).get('/posts/postsWithPagination?page=1');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBeLessThanOrEqual(10);  // Verifica que hay máximo 10 publicaciones
+  });
+});
+
+describe('POST /create', () => {
+  it('should create a new post with valid fields', async () => {
+    const newPost = {
+      title: 'Nuevo post',
+      body: 'Contenido del nuevo post'
+    };
+
+    const response = await request(app).post('/posts/create').send(newPost);
+    expect(response.status).toBe(201);
+    expect(response.body.title).toBe(newPost.title);
+    expect(response.body.body).toBe(newPost.body);
+  });
+
+  it('should not create a post with missing fields', async () => {
+    const invalidPost = {
+      title: 'Post sin cuerpo'
+    };
+
+    const response = await request(app).post('/posts/create').send(invalidPost);
+    expect(response.status).toBe(500);  // Si tienes manejo de errores, podrías devolver un 400 o 422
+  });
+});
+
+describe('GET /', () => {
+  it('should retrieve all posts', async () => {
+    const response = await request(app).get('/posts');
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);  // Verifica que la respuesta es un array
+  });
+});*/

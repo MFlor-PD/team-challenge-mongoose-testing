@@ -76,4 +76,19 @@ router.delete("/id/:_id", async (req, res) => {
     }   
 });
     
+// Ruta para obtener publicaciones con paginación
+router.get('/postsWithPagination', async (req, res) => {
+    const page = parseInt(req.query.page) || 1; // Página por defecto es la 1
+    const limit = 10; // 10 publicaciones por página
+  
+    try {
+      const posts = await POST.find()
+        .skip((page - 1) * limit)  // Calcula el número de posts a saltar
+        .limit(limit);  // Límite de publicaciones
+  
+      res.json(posts);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 module.exports = router;
