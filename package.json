@@ -1,0 +1,32 @@
+{
+  "name": "team-challenge-mongoose-testing",
+  "version": "1.0.0",
+  "description": "Téneis que crear una API en Node.js utilizando Express con mongoose que consistirá en una red social, donde podras crear, ver publicaciones, actulizar y borrarlas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "test:watch": "jest --watchAll"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MFlor-PD/team-challenge-mongoose-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MFlor-PD/team-challenge-mongoose-testing/issues"
+  },
+  "homepage": "https://github.com/MFlor-PD/team-challenge-mongoose-testing#readme",
+  "dependencies": {
+    "dotenv": "16.5.0",
+    "express": "5.1.0",
+    "mongoose": "8.14.1"
+  },
+  "devDependencies": {
+    "jest": "29.7.0",
+    "supertest": "7.1.0"
+  }
+}
