@@ -3,6 +3,45 @@ const app = require("../index.js");
 const mongoose = require('mongoose');
 const POST = require('../models/Post');
 
+beforeAll(async () => {
+  await mongoose.connect("mongodb://localhost/test");  // Conectar a la base de datos de test
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();  // Cerrar la conexión a la base de datos
+});
+
+describe('POST API', () => {
+  let newPostId;
+
+  afterEach(async () => {
+    await POST.deleteMany();  // Elimina todos los posts creados para asegurar un entorno limpio para cada test
+  });
+
+  test('Debe crear un nuevo post', async () => {
+    const res = await request(app).post('/post/create').send({
+      title: 'Post de prueba',
+      body: 'Este es un test'
+    });
+
+    expect(res.statusCode).toBe(201);
+    expect(res.body.title).toBe('Post de prueba');
+    newPostId = res.body._id;
+  });
+
+  test('Debe obtener todos los posts', async () => {
+    const res = await request(app).get('/post/');
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+
+  test('Debe obtener un post por id', async () => {
+    const res = await request(app).get(`/post/id/${newPostId}`);
+    expect(res.statusCode).toBe(200);
+    expect(res.body._id).toBe(newPostId);
+  });
+}); 
+
 /*describe('Ruta de prueba para usuarios', () => {
   test('GET /user debe responder con 200', async () => {
     const response = await request(app).get('/user'); // ajustá la ruta según tu app
