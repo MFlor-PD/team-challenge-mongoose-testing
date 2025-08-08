@@ -11,7 +11,7 @@ app.use("/post", Postroutes);
 //console.log("MONGO_URI desde index.js:", process.env.MONGO_URI); // <-- Añade esta línea
 dbConnection();
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server started at port: http://localhost:${PORT}`));
 
 
 module.exports = app;
