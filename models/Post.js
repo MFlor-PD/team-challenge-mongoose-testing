@@ -11,6 +11,9 @@ const PostSchema = new mongoose.Schema({
         required: true,
         trim: true     
     },
+    isTest: { 
+        type: Boolean,
+         default: false }
    
 }, 
 { timestamps: true });

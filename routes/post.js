@@ -4,12 +4,12 @@ const POST = require("../models/Post.js");
 
 router.post("/create", async(req, res) => {
     try {
-        const { title, body } = req.body;
+        const { title, body, isTest } = req.body;
 
         if (!title || !body) {
             return res.status(400).send({ message: "Title and body are required" });
         }
-        const post = await POST.create({ title, body });
+        const post = await POST.create({ title, body, isTest});
         res.status(201).send(post);
     } catch (error) {
         console.error(error);
